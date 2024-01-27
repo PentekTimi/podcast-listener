@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300;8..144,400;8..144,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* base layer is for html tags */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading font-black;
+  }
+}
+
+/* components layer is for class based styles */
+/* utilities layer is for single purpose classes, should take precedence over any other styles */
