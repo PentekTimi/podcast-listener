@@ -7,6 +7,10 @@
 
 /* base layer is for html tags */
 @layer base {
+  html {
+    @apply text-white box-border;
+  }
+
   h1,
   h2,
   h3,
