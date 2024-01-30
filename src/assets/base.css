@@ -23,3 +23,82 @@
 
 /* components layer is for class based styles */
 /* utilities layer is for single purpose classes, should take precedence over any other styles */
+@layer utilities {
+  .heading-text {
+    @apply text-2xl /* screen smaller than 495px */
+    xs:text-[5.8vw] xs:mt-[2vw]/* screen above 495px */
+    2xl:text-[84px] 2xl:mt-[25px]/* above 1280px */;
+  }
+
+  .heading-img {
+    @apply h-[22px] rounded-full ml-1.5 mr-1
+    xs:h-[4.5vw] xs:mt-[2vw]
+    2xl:h-[64px] 2xl:mt-[25px];
+  }
+
+  .img-left-margin {
+    @apply md:ml-2;
+  }
+
+  .animated-box {
+    max-width: 200px;
+    min-height: 50px;
+    position: relative;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .animated-box:hover {
+    animation: fadeOut 2s ease-in;
+    border-color: black;
+  }
+
+  .animated-box:hover::after {
+    content: '';
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background-image: conic-gradient(transparent, transparent, transparent, #f5abf5);
+    animation: animate 3s linear infinite;
+    animation-delay: -1.5s;
+  }
+
+  .animated-box:hover::before {
+    content: '';
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background-image: conic-gradient(transparent, transparent, transparent, #96e9fa);
+    animation: animate 3s linear infinite;
+  }
+
+  @keyframes animate {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes fadeOut {
+    0% {
+      border-color: white;
+    }
+    100% {
+      border-color: black;
+    }
+  }
+
+  .animated-box .span-hide {
+    position: absolute;
+    z-index: 1;
+    background-color: black;
+    inset: 1px;
+    border-radius: 12px;
+  }
+}

@@ -2,17 +2,37 @@
 export default {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        xs: '495px',
+        md: '805px'
+      },
+      boxShadow: {
+        lg: '4px 4px 15px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)'
+      },
+      textShadow: {
+        sm: '0 2px 6px rgba(255, 255, 255 , 0.7)'
+      },
+      fontSize: {
+        xs: ['12px', '16px']
+      }
+    },
     fontFamily: {
       heading: ['Geologica', 'sans-serif'],
       body: ['Roboto\\ Flex', 'sans-serif']
-    },
-    fontSize: {
-      sm: ['14px', '20px'],
-      base: ['16px', '24px'],
-      lg: ['20px', '28px'],
-      xl: ['24px', '32px']
     }
   },
-  plugins: []
+  plugins: [
+    require('tailwind-scrollbar'),
+    function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          'text-shadow': (value) => ({
+            textShadow: value
+          })
+        },
+        { values: theme('textShadow') }
+      )
+    }
+  ]
 }
