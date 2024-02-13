@@ -16,8 +16,8 @@
             v-show="menu"
             class="absolute right-0 ml-[10%] mt-2 w-[150px] bg-gradient-to-b from-[#00000033] to-black"
           >
-            <li class="relative p-2"><a href="">Log In</a></li>
-            <li class="relative px-2 pb-4"><a href="">Sign Up</a></li>
+            <li class="relative p-2"><router-link to="/auth">Log In</router-link></li>
+            <li class="relative px-2 pb-4"><router-link to="/auth">Sign Up</router-link></li>
           </ul>
         </transition>
       </div>
@@ -26,12 +26,12 @@
     <div class="hidden sm:block">
       <ul class="flex">
         <li class="pt-1 pb-1.5 mr-3 cursor-pointer">
-          <a href="" class="hover:text-shadow-sm">Sign Up</a>
+          <router-link to="/auth" class="hover:text-shadow-sm">Sign Up</router-link>
         </li>
         <li
           class="pt-1 pb-1.5 px-6 lg:px-8 border rounded-xl hover:bg-white hover:text-black cursor-pointer hover:shadow-[#dcdae152] hover:shadow-lg"
         >
-          <a href="">Log In</a>
+          <router-link to="/auth">Log In</router-link>
         </li>
       </ul>
     </div>
@@ -40,6 +40,7 @@
 
 <script>
 export default {
+  name: 'NavSection',
   data() {
     return {
       menu: false

@@ -10,3 +10,9 @@
     <h1 class="heading-text">EVERY DAY</h1>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'MainHeading'
+}
+</script>
