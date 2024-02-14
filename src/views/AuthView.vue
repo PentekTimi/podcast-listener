@@ -1,94 +1,48 @@
 <template>
-  <div>
-    <h1>Sign Up/ Login</h1>
-    <p>Sign up to enjoy the best selection of podcasts.</p>
-  </div>
-
+  <!-- small screen forms -->
   <div class="md:hidden">
+    <div class="text-center">
+      <h1>Sign Up/ Login</h1>
+      <p>Sign up to enjoy the best selection of podcasts.</p>
+    </div>
+
     <form v-show="tab === 'register'">
-      <!-- Name -->
-      <div class="mb-3">
-        <label>Name</label>
-        <input
-          type="text"
-          placeholder="Enter your name"
-          class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
-        />
-      </div>
-      <!-- Email -->
-      <div class="mb-3">
-        <label>Email</label>
-        <input
-          type="email"
-          placeholder="Enter your email"
-          class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
-        />
-      </div>
-      <!-- Password -->
-      <div class="mb-3">
-        <label>Password</label>
-        <input
-          type="password"
-          placeholder="Create password"
-          class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
-        />
-      </div>
-      <!-- confirm password -->
-      <div class="mb-3">
-        <label>Confirm Password</label>
-        <input
-          type="password"
-          placeholder="Confirm password"
-          class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
-        />
-      </div>
-      <!-- temrs and conditions -->
-      <div class="mb-3 pl-6">
-        <input type="checkbox" class="w-4 h-4 float-left -ml-6 mt-1 rounded" />
-        <label class="inline-block">Accept terms of service</label>
-      </div>
-      <!-- submit btn -->
-      <button
-        type="submit"
-        class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition hover:bg-purple-700"
-      >
-        Submit
-      </button>
+      <app-register></app-register>
     </form>
 
     <form v-show="tab === 'login'">
-      <!-- Email -->
-      <div class="mb-3">
-        <label class="inline-block mb-2">Email</label>
-        <input
-          type="email"
-          class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
-          placeholder="Enter Email"
-        />
-      </div>
-      <!-- Password -->
-      <div class="mb-3">
-        <label class="inline-block mb-2">Password</label>
-        <input
-          type="password"
-          class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
-          placeholder="Password"
-        />
-      </div>
-      <!-- submit btn -->
-      <button
-        type="submit"
-        class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition hover:bg-purple-700"
-      >
-        Submit
-      </button>
+      <app-login></app-login>
+    </form>
+  </div>
+
+  <!-- aabove md screen forms -->
+  <div
+    class="hidden md:block max-w-xl m-auto px-12 py-12 mt-[5%] rounded bg-white/[0.03] backdrop-blur shadow-[0_8px_32px_0px_rgba(31,38,135,0.37 )]"
+  >
+    <div class="flex mb-8 shadow-md">
+      <div class="bg-white/[0.06] grow px-4 py-2 rounded-l-md">Login</div>
+      <div class="bg-white/[0.03] grow px-4 py-2 rounded-r-md">Sign Up</div>
+    </div>
+
+    <form v-show="tab === 'login'">
+      <app-login></app-login>
+    </form>
+
+    <form v-show="tab === 'register'">
+      <app-register></app-register>
     </form>
   </div>
 </template>
 
 <script>
+import AppLogin from '../components/AppLogin.vue'
+import AppRegister from '../components/AppRegister.vue'
 export default {
   name: 'AuthView',
+  components: {
+    AppLogin,
+    AppRegister
+  },
   data() {
     return {
       tab: 'register'
