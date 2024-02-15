@@ -16,6 +16,7 @@
   "dependencies": {
     "pinia": "^2.1.7",
     "tailwind-scrollbar": "^3.0.5",
+    "vee-validate": "^4.12.5",
     "vue": "^3.3.11",
     "vue-router": "^4.2.5"
   },

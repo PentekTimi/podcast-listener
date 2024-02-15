@@ -49,15 +49,26 @@
 <script>
 import AppLogin from '../components/AppLogin.vue'
 import AppRegister from '../components/AppRegister.vue'
+import { useAuthStore } from '../stores/auth'
+// we set the initial value of tab to authtab from the pinia authstore
+// default value for authstore is 'register'. user can only get to auth page from main home page/ or through entering route
+// tab value can then be updated based on user interaction and not from store (and not updating store value)
+// it would run extra scripts with no impact on the correct visible components. could a user break the interface?
+// authtab value is only needed and used when user first clicks on either login/register from the home page
+
 export default {
   name: 'AuthView',
+  setup() {
+    const authStore = useAuthStore()
+    return { authStore }
+  },
   components: {
     AppLogin,
     AppRegister
   },
   data() {
     return {
-      tab: 'register'
+      tab: this.authStore.authTab
     }
   },
   methods: {

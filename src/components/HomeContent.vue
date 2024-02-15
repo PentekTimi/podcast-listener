@@ -8,6 +8,7 @@
       </p>
 
       <router-link
+        @click="setAuthTab('register')"
         to="/auth"
         class="animated-box inline-block pt-2 pb-2.5 px-6 lg:px-8 border rounded-xl mb-10 md:mb-5 cursor-pointer"
       >
@@ -60,7 +61,17 @@
 </template>
 
 <script>
+import { useAuthStore } from '../stores/auth'
 export default {
-  name: 'HomeContent'
+  name: 'HomeContent',
+  setup() {
+    const authStore = useAuthStore()
+    return { authStore }
+  },
+  methods: {
+    setAuthTab(arg) {
+      this.authStore.authTab = arg
+    }
+  }
 }
 </script>
