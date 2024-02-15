@@ -40,6 +40,12 @@
       <input type="checkbox" class="w-4 h-4 float-left -ml-6 mt-1 rounded" />
       <label class="inline-block">Accept terms of service</label>
     </div>
+    <div class="text-sm">
+      <p class="inline-block mr-1">Are you a member?</p>
+      <span class="underline font-bold cursor-pointer" @click.prevent="$emit('changeTab', 'login')"
+        >Log In Now.</span
+      >
+    </div>
     <!-- submit btn -->
     <button
       type="submit"

@@ -18,6 +18,14 @@
         placeholder="Password"
       />
     </div>
+    <div class="text-sm">
+      <p class="inline-block mr-1">Not a member yet?</p>
+      <span
+        class="underline font-bold cursor-pointer"
+        @click.prevent="$emit('changeTab', 'register')"
+        >Sign Up Now.</span
+      >
+    </div>
     <!-- submit btn -->
     <button
       type="submit"

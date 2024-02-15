@@ -16,6 +16,7 @@
             v-show="menu"
             class="absolute right-0 ml-[10%] mt-2 w-[150px] bg-gradient-to-b from-[#00000033] to-black"
           >
+            <!-- pinia global state to change the tab data in authview? -->
             <li class="relative p-2"><router-link to="/auth">Log In</router-link></li>
             <li class="relative px-2 pb-4"><router-link to="/auth">Sign Up</router-link></li>
           </ul>

@@ -7,7 +7,8 @@
         listen now.
       </p>
 
-      <div
+      <router-link
+        to="/auth"
         class="animated-box inline-block pt-2 pb-2.5 px-6 lg:px-8 border rounded-xl mb-10 md:mb-5 cursor-pointer"
       >
         <span class="span-hide"></span>
@@ -29,7 +30,7 @@
             </svg>
           </span>
         </p>
-      </div>
+      </router-link>
     </div>
 
     <!-- supported by -->
