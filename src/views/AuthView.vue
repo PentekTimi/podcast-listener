@@ -6,13 +6,13 @@
       <p class="text-md mb-4 leading-5">Sign up to enjoy the best selection of podcasts.</p>
     </div>
 
-    <form v-show="tab === 'register'" class="max-w-lg m-auto">
+    <div v-show="tab === 'register'" class="max-w-lg m-auto">
       <app-register @change-tab="toggleTab"></app-register>
-    </form>
+    </div>
 
-    <form v-show="tab === 'login'" class="max-w-lg m-auto">
+    <div v-show="tab === 'login'" class="max-w-lg m-auto">
       <app-login @change-tab="toggleTab"></app-login>
-    </form>
+    </div>
   </div>
 
   <!-- aabove md screen forms -->
@@ -27,6 +27,7 @@
       >
         Login
       </div>
+
       <div
         class="grow px-4 py-2 rounded-r-md cursor-pointer"
         :class="tab === 'register' ? 'bg-white/[0.06]' : 'bg-white/[0.03]'"
@@ -36,13 +37,13 @@
       </div>
     </div>
 
-    <form v-show="tab === 'login'">
+    <div v-if="tab === 'login'">
       <app-login @change-tab="toggleTab"></app-login>
-    </form>
+    </div>
 
-    <form v-show="tab === 'register'">
+    <div v-if="tab === 'register'">
       <app-register @change-tab="toggleTab"></app-register>
-    </form>
+    </div>
   </div>
 </template>
 
