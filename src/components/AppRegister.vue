@@ -130,7 +130,7 @@ export default {
 
       this.registration_alert_msg = 'Success! Your account has been created.'
       this.registration_alert_variant = 'bg-green-500'
-      window.location.reload()
+      window.location.href = '/'
     }
   }
 }

@@ -23,7 +23,9 @@
               <router-link @click="setAuthTab('register')" to="/auth">Sign Up</router-link>
             </li>
             <template v-else>
-              <li class="relative p-2"><router-link to="/">Manage</router-link></li>
+              <li class="relative p-2">
+                <router-link :to="{ name: 'manage' }">Manage</router-link>
+              </li>
               <li class="relative px-2 pb-4">
                 <router-link to="/" @click.prevent="userStore.signOut">Log Out</router-link>
               </li>
@@ -55,7 +57,7 @@
           <li
             class="pt-1 pb-1.5 px-6 lg:px-8 border rounded-xl hover:bg-white hover:text-black cursor-pointer hover:shadow-[#dcdae152] hover:shadow-lg"
           >
-            <router-link to="/">Manage</router-link>
+            <router-link :to="{ name: 'manage' }">Manage</router-link>
           </li>
         </template>
       </ul>

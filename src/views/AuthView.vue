@@ -1,4 +1,18 @@
 <template>
+  <router-link to="/" class=""
+    ><span class="relative top-0.5 mr-1.5 inline-block rotate-[-90deg]">
+      <svg
+        class="w-3 lg:w-[15px]"
+        width="16"
+        height="16"
+        viewBox="0 0 61 61"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M15.7314 1H59.9256M59.9256 1L59.9256 45.1942M59.9256 1L1 59.9256" stroke="white" />
+      </svg> </span
+    >Back to Home</router-link
+  >
   <!-- small screen forms -->
   <div class="md:hidden">
     <div class="text-center">
@@ -17,7 +31,7 @@
 
   <!-- aabove md screen forms -->
   <div
-    class="hidden md:block max-w-xl m-auto px-12 py-12 mt-[5%] rounded bg-white/[0.03] backdrop-blur shadow-[0_8px_32px_0px_rgba(31,38,135,0.37 )]"
+    class="hidden md:block max-w-xl m-auto px-12 py-12 rounded bg-white/[0.03] backdrop-blur shadow-[0_8px_32px_0px_rgba(31,38,135,0.37 )]"
   >
     <div class="flex mb-8 shadow-md">
       <div
