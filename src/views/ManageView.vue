@@ -5,7 +5,7 @@
     <div class="md:grid md:grid-cols-3 md:gap-4">
       <div class="col-span-1">
         <!-- upload -->
-        <app-upload></app-upload>
+        <app-upload :addPodcast="addPodcast"></app-upload>
       </div>
 
       <div class="col-span-2">
@@ -22,88 +22,15 @@
           </div>
           <div class="px-6 pb-6 pt-4">
             <!-- Composition Items -->
-            <div class="px-3 pb-3 mb-4">
-              <div>
-                <h4 class="inline-block text-2xl font-bold">Song Name</h4>
-                <button class="ml-1 py-1 px-2 text-sm rounded text-white bg-[#CF6679] float-right">
-                  <font-awesome-icon icon="fa fa-times" />
-                </button>
-                <button class="ml-1 py-1 px-2 text-sm rounded text-white bg-[#e4aa57] float-right">
-                  <font-awesome-icon icon="fa fa-pencil-alt" />
-                </button>
-              </div>
-              <div>
-                <form class="mt-4">
-                  <div class="mb-3">
-                    <label class="inline-block mb-2">Song Title</label>
-                    <input
-                      type="text"
-                      class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
-                      placeholder="Enter Song Title"
-                    />
-                  </div>
-                  <div class="mb-3">
-                    <label class="inline-block mb-2">Genre</label>
-                    <input
-                      type="text"
-                      class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
-                      placeholder="Enter Genre"
-                    />
-                  </div>
-                  <button type="submit" class="py-1.5 px-3 mr-3 rounded text-white bg-[#BB86FC]">
-                    Submit
-                  </button>
-                  <button type="button" class="py-1.5 px-3 mr-3 rounded text-white bg-gray-700">
-                    Go Back
-                  </button>
-                </form>
-              </div>
-            </div>
-            <hr class="my-6" />
-            <div class="p-3 mb-4">
-              <div>
-                <h4 class="inline-block text-2xl font-bold">Song Name</h4>
-                <button class="ml-1 py-1 px-2 text-sm rounded text-white bg-[#CF6679] float-right">
-                  <font-awesome-icon icon="fa fa-times" />
-                </button>
-                <button class="ml-1 py-1 px-2 text-sm rounded text-white bg-[#e4aa57] float-right">
-                  <font-awesome-icon icon="fa fa-pencil-alt" />
-                </button>
-              </div>
-            </div>
-            <div class="p-3 mb-4">
-              <div>
-                <h4 class="inline-block text-2xl font-bold">Song Name</h4>
-                <button class="ml-1 py-1 px-2 text-sm rounded text-white bg-red-600 float-right">
-                  <i class="fa fa-times"></i>
-                </button>
-                <button class="ml-1 py-1 px-2 text-sm rounded text-white bg-blue-600 float-right">
-                  <i class="fa fa-pencil-alt"></i>
-                </button>
-              </div>
-            </div>
-            <div class="p-3 mb-4">
-              <div>
-                <h4 class="inline-block text-2xl font-bold">Song Name</h4>
-                <button class="ml-1 py-1 px-2 text-sm rounded text-white bg-red-600 float-right">
-                  <i class="fa fa-times"></i>
-                </button>
-                <button class="ml-1 py-1 px-2 text-sm rounded text-white bg-blue-600 float-right">
-                  <i class="fa fa-pencil-alt"></i>
-                </button>
-              </div>
-            </div>
-            <div class="p-3 mb-4">
-              <div>
-                <h4 class="inline-block text-2xl font-bold">Song Name</h4>
-                <button class="ml-1 py-1 px-2 text-sm rounded text-white bg-red-600 float-right">
-                  <i class="fa fa-times"></i>
-                </button>
-                <button class="ml-1 py-1 px-2 text-sm rounded text-white bg-blue-600 float-right">
-                  <i class="fa fa-pencil-alt"></i>
-                </button>
-              </div>
-            </div>
+            <composition-item
+              v-for="(podcast, i) in podcasts"
+              :key="podcast.docID"
+              :podcast="podcast"
+              :updatePodcast="updatePodcast"
+              :index="i"
+              :removePodcast="removePodcast"
+              :updateUnsavedFlag="updateUnsavedFlag"
+            ></composition-item>
           </div>
         </div>
       </div>
@@ -114,12 +41,56 @@
 <script>
 import NavSection from '@/components/NavSection.vue'
 import AppUpload from '@/components/AppUpload.vue'
+import CompositionItem from '@/components/CompositionItem.vue'
+import { auth, podcastsCollection } from '@/includes/firebase'
+import { where, query, getDocs } from 'firebase/firestore'
 
 export default {
   name: 'manage-view',
   components: {
     NavSection,
-    AppUpload
+    AppUpload,
+    CompositionItem
+  },
+  data() {
+    return {
+      podcasts: [],
+      unsavedFlag: false
+    }
+  },
+  async created() {
+    const q = query(podcastsCollection, where('uid', '==', auth.currentUser.uid))
+    const snapshot = await getDocs(q)
+
+    snapshot.forEach(this.addPodcast)
+  },
+  methods: {
+    updatePodcast(i, values) {
+      this.podcasts[i].modified_name = values.modified_name
+      this.podcasts[i].genre = values.genre
+    },
+    removePodcast(i) {
+      this.podcasts.splice(i, 1)
+    },
+    addPodcast(document) {
+      const podcast = {
+        ...document.data(),
+        docID: document.id
+      }
+
+      this.podcasts.push(podcast)
+    },
+    updateUnsavedFlag(value) {
+      this.unsavedFlag = value
+    }
+  },
+  beforeRouteLeave(to, from, next) {
+    if (!this.unsavedFlag) {
+      next()
+    } else {
+      const leave = confirm('You have unsaved changes. Are you sure you want to leave?')
+      next(leave)
+    }
   }
 }
 </script>

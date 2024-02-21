@@ -45,7 +45,7 @@
 <script>
 import { storage, auth, podcastsCollection } from '../includes/firebase'
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
-import { addDoc } from 'firebase/firestore'
+import { addDoc, getDoc } from 'firebase/firestore'
 
 export default {
   name: 'AppUpload',
@@ -55,6 +55,7 @@ export default {
       uploads: []
     }
   },
+  props: ['addPodcast'],
   methods: {
     upload($event) {
       this.is_dragover = false
@@ -110,7 +111,10 @@ export default {
             }
 
             podcast.url = await getDownloadURL(uploadTask.snapshot.ref)
-            await addDoc(podcastsCollection, podcast)
+            const podcastRef = await addDoc(podcastsCollection, podcast)
+            const podcastSnapshot = await getDoc(podcastRef)
+
+            this.addPodcast(podcastSnapshot)
 
             this.uploads[uploadIndex].variant = 'bg-[#4EE4A2]'
             this.uploads[uploadIndex].icon = 'fas fa-check'
