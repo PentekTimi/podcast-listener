@@ -2,7 +2,7 @@
   <!-- navbar -->
   <nav class="flex justify-between mb-12">
     <div>
-      <h2 class="">PODCASTIN'</h2>
+      <router-link to="/"><h2 class="">PODCASTIN'</h2></router-link>
     </div>
     <div class="">
       <div class="relative sm:hidden w-6 cursor-pointer" @click="showMenu">
