@@ -21,8 +21,13 @@ import {
   faCompactDisc,
   faCheck,
   faHeadphonesAlt,
-  faPlay
+  faPlay,
+  faCircle,
+  faPause,
+  faRotateLeft,
+  faComment
 } from '@fortawesome/free-solid-svg-icons'
+import { faComments } from '@fortawesome/free-regular-svg-icons'
 
 /* add icons to the library */
 library.add(
@@ -33,7 +38,11 @@ library.add(
   faCompactDisc,
   faCheck,
   faHeadphonesAlt,
-  faPlay
+  faPlay,
+  faCircle,
+  faPause,
+  faRotateLeft,
+  faComment
 )
 
 let app

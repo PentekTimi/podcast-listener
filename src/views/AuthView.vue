@@ -1,62 +1,67 @@
 <template>
-  <router-link to="/" class=""
-    ><span class="relative top-0.5 mr-1.5 inline-block rotate-[-90deg]">
-      <svg
-        class="w-3 lg:w-[15px]"
-        width="16"
-        height="16"
-        viewBox="0 0 61 61"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M15.7314 1H59.9256M59.9256 1L59.9256 45.1942M59.9256 1L1 59.9256" stroke="white" />
-      </svg> </span
-    >Back to Home</router-link
-  >
-  <!-- small screen forms -->
-  <div class="md:hidden">
-    <div class="text-center">
-      <h1 class="text-xl mb-1">{{ tab === 'register' ? 'Sign Up' : 'Log In' }}</h1>
-      <p class="text-md mb-4 leading-5">Sign up to enjoy the best selection of podcasts.</p>
-    </div>
-
-    <div v-show="tab === 'register'" class="max-w-lg m-auto">
-      <app-register @change-tab="toggleTab"></app-register>
-    </div>
-
-    <div v-show="tab === 'login'" class="max-w-lg m-auto">
-      <app-login @change-tab="toggleTab"></app-login>
-    </div>
-  </div>
-
-  <!-- aabove md screen forms -->
-  <div
-    class="hidden md:block max-w-xl m-auto px-12 py-12 rounded bg-white/[0.03] backdrop-blur shadow-[0_8px_32px_0px_rgba(31,38,135,0.37 )]"
-  >
-    <div class="flex mb-8 shadow-md">
-      <div
-        class="grow px-4 py-2 rounded-l-md cursor-pointer"
-        :class="tab === 'login' ? 'bg-white/[0.06]' : 'bg-white/[0.03]'"
-        @click.prevent="tab = 'login'"
-      >
-        Login
+  <div>
+    <router-link to="/" class=""
+      ><span class="relative top-0.5 mr-1.5 inline-block rotate-[-90deg]">
+        <svg
+          class="w-3 lg:w-[15px]"
+          width="16"
+          height="16"
+          viewBox="0 0 61 61"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.7314 1H59.9256M59.9256 1L59.9256 45.1942M59.9256 1L1 59.9256"
+            stroke="white"
+          />
+        </svg> </span
+      >Back to Home</router-link
+    >
+    <!-- small screen forms -->
+    <div class="md:hidden">
+      <div class="text-center">
+        <h1 class="text-xl mb-1">{{ tab === 'register' ? 'Sign Up' : 'Log In' }}</h1>
+        <p class="text-md mb-4 leading-5">Sign up to enjoy the best selection of podcasts.</p>
       </div>
 
-      <div
-        class="grow px-4 py-2 rounded-r-md cursor-pointer"
-        :class="tab === 'register' ? 'bg-white/[0.06]' : 'bg-white/[0.03]'"
-        @click.prevent="tab = 'register'"
-      >
-        Sign Up
+      <div v-show="tab === 'register'" class="max-w-lg m-auto">
+        <app-register @change-tab="toggleTab"></app-register>
+      </div>
+
+      <div v-show="tab === 'login'" class="max-w-lg m-auto">
+        <app-login @change-tab="toggleTab"></app-login>
       </div>
     </div>
 
-    <div v-if="tab === 'login'">
-      <app-login @change-tab="toggleTab"></app-login>
-    </div>
+    <!-- aabove md screen forms -->
+    <div
+      class="hidden md:block max-w-xl m-auto px-12 py-12 rounded bg-white/[0.03] backdrop-blur shadow-[0_8px_32px_0px_rgba(31,38,135,0.37 )]"
+    >
+      <div class="flex mb-8 shadow-md">
+        <div
+          class="grow px-4 py-2 rounded-l-md cursor-pointer"
+          :class="tab === 'login' ? 'bg-white/[0.06]' : 'bg-white/[0.03]'"
+          @click.prevent="tab = 'login'"
+        >
+          Login
+        </div>
 
-    <div v-if="tab === 'register'">
-      <app-register @change-tab="toggleTab"></app-register>
+        <div
+          class="grow px-4 py-2 rounded-r-md cursor-pointer"
+          :class="tab === 'register' ? 'bg-white/[0.06]' : 'bg-white/[0.03]'"
+          @click.prevent="tab = 'register'"
+        >
+          Sign Up
+        </div>
+      </div>
+
+      <div v-if="tab === 'login'">
+        <app-login @change-tab="toggleTab"></app-login>
+      </div>
+
+      <div v-if="tab === 'register'">
+        <app-register @change-tab="toggleTab"></app-register>
+      </div>
     </div>
   </div>
 </template>

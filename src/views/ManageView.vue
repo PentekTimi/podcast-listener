@@ -1,41 +1,43 @@
 <template>
-  <nav-section></nav-section>
-  <!-- Main Content -->
-  <section class="container mx-auto mt-6">
-    <div class="md:grid md:grid-cols-3 md:gap-4">
-      <div class="col-span-1">
-        <!-- upload -->
-        <app-upload :addPodcast="addPodcast"></app-upload>
-      </div>
+  <div>
+    <nav-section></nav-section>
+    <!-- Main Content -->
+    <section class="container mx-auto mt-6">
+      <div class="md:grid md:grid-cols-3 md:gap-4">
+        <div class="col-span-1">
+          <!-- upload -->
+          <app-upload :addPodcast="addPodcast"></app-upload>
+        </div>
 
-      <div class="col-span-2">
-        <!-- song list -->
-        <div
-          class="bg-white/[0.03] backdrop-blur shadow-[0_8px_32px_0px_rgba(31,38,135,0.37 )] rounded relative flex flex-col"
-        >
-          <div class="px-6 pt-6 pb-5 font-bold">
-            <span class="card-title text-md">My Songs</span>
-            <font-awesome-icon
-              icon="fa fa-compact-disc"
-              class="float-right text-zinc-800 text-2xl"
-            />
-          </div>
-          <div class="px-6 pb-6 pt-4">
-            <!-- Composition Items -->
-            <composition-item
-              v-for="(podcast, i) in podcasts"
-              :key="podcast.docID"
-              :podcast="podcast"
-              :updatePodcast="updatePodcast"
-              :index="i"
-              :removePodcast="removePodcast"
-              :updateUnsavedFlag="updateUnsavedFlag"
-            ></composition-item>
+        <div class="col-span-2">
+          <!-- song list -->
+          <div
+            class="bg-white/[0.03] backdrop-blur shadow-[0_8px_32px_0px_rgba(31,38,135,0.37 )] rounded relative flex flex-col"
+          >
+            <div class="px-6 pt-6 pb-5 font-bold">
+              <span class="card-title text-md">My Songs</span>
+              <font-awesome-icon
+                icon="fa fa-compact-disc"
+                class="float-right text-zinc-800 text-2xl"
+              />
+            </div>
+            <div class="px-6 pb-6 pt-4">
+              <!-- Composition Items -->
+              <composition-item
+                v-for="(podcast, i) in podcasts"
+                :key="podcast.docID"
+                :podcast="podcast"
+                :updatePodcast="updatePodcast"
+                :index="i"
+                :removePodcast="removePodcast"
+                :updateUnsavedFlag="updateUnsavedFlag"
+              ></composition-item>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <script>

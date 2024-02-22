@@ -1,11 +1,13 @@
 <template>
-  <nav-section></nav-section>
-  <main-heading></main-heading>
+  <main>
+    <nav-section></nav-section>
+    <main-heading></main-heading>
 
-  <div class="md:flex md:justify-between">
-    <home-content></home-content>
-    <podcast-list></podcast-list>
-  </div>
+    <div class="md:flex md:justify-between">
+      <home-content></home-content>
+      <podcast-list></podcast-list>
+    </div>
+  </main>
 </template>
 
 <script>
