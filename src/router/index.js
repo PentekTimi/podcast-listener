@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AuthView from '../views/AuthView.vue'
 import ManageView from '../views/ManageView.vue'
+import DashboardView from '../views/DashboardView.vue'
+import PodcastView from '../views/PodcastView.vue'
 import useUserStore from '@/stores/user'
 
 const router = createRouter({
@@ -21,6 +23,18 @@ const router = createRouter({
       path: '/manage',
       name: 'manage',
       component: ManageView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: DashboardView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/podcast/:id',
+      name: 'podcast',
+      component: PodcastView,
       meta: { requiresAuth: true }
     },
     {

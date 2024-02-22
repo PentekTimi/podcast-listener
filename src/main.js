@@ -19,11 +19,12 @@ import {
   faTimes,
   faPencilAlt,
   faCompactDisc,
-  faCheck
+  faCheck,
+  faHeadphonesAlt
 } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
-library.add(faSpinner, faUpload, faTimes, faPencilAlt, faCompactDisc, faCheck)
+library.add(faSpinner, faUpload, faTimes, faPencilAlt, faCompactDisc, faCheck, faHeadphonesAlt)
 
 let app
 auth.onAuthStateChanged(() => {

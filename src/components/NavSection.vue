@@ -24,6 +24,9 @@
             </li>
             <template v-else>
               <li class="relative p-2">
+                <router-link :to="{ name: 'dashboard' }">Dashboard</router-link>
+              </li>
+              <li class="relative p-2">
                 <router-link :to="{ name: 'manage' }">Manage</router-link>
               </li>
               <li class="relative px-2 pb-4">
@@ -49,15 +52,18 @@
           <router-link @click="setAuthTab('login')" to="/auth">Log In</router-link>
         </li>
         <template v-else>
-          <li class="pt-1 pb-1.5 mr-3 cursor-pointer">
+          <li class="pt-1 pb-1.5 mr-6 cursor-pointer">
+            <router-link :to="{ name: 'dashboard' }" class="hover:text-shadow-sm"
+              >Dashboard</router-link
+            >
+          </li>
+          <li class="pt-1 pb-1.5 mr-6 cursor-pointer">
+            <router-link :to="{ name: 'manage' }" class="hover:text-shadow-sm">Manage</router-link>
+          </li>
+          <li class="pt-1 pb-1.5 cursor-pointer">
             <router-link to="/" class="hover:text-shadow-sm" @click.prevent="userStore.signOut"
               >Log Out</router-link
             >
-          </li>
-          <li
-            class="pt-1 pb-1.5 px-6 lg:px-8 border rounded-xl hover:bg-white hover:text-black cursor-pointer hover:shadow-[#dcdae152] hover:shadow-lg"
-          >
-            <router-link :to="{ name: 'manage' }">Manage</router-link>
           </li>
         </template>
       </ul>
