@@ -3,14 +3,14 @@
     <nav-section></nav-section>
     <dashboard-intro></dashboard-intro>
 
-    <section class="container mx-auto">
+    <section class="container mx-auto mb-[10%]">
       <div class="rounded border border-gray-200 relative flex flex-col mb-10">
         <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
-          <span class="card-title">Songs</span>
+          <span class="card-title">Podcasts</span>
           <!-- Icon -->
           <font-awesome-icon
             icon="fa fa-headphones-alt"
-            class="float-right text-green-400 text-xl"
+            class="float-right text-zinc-800 text-xl"
           />
         </div>
         <!-- Playlist -->

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- back to home -->
     <router-link to="/" class=""
       ><span class="relative top-0.5 mr-1.5 inline-block rotate-[-90deg]">
         <svg
@@ -15,13 +16,14 @@
             stroke="white"
           />
         </svg> </span
-      >Back to Home</router-link
+      >{{ $t('auth.navigateBack') }}</router-link
     >
     <!-- small screen forms -->
     <div class="md:hidden">
       <div class="text-center">
-        <h1 class="text-xl mb-1">{{ tab === 'register' ? 'Sign Up' : 'Log In' }}</h1>
-        <p class="text-md mb-4 leading-5">Sign up to enjoy the best selection of podcasts.</p>
+        <h1 class="text-xl mb-1">
+          {{ tab === 'register' ? $t('navbar.register') : $t('navbar.login') }}
+        </h1>
       </div>
 
       <div v-show="tab === 'register'" class="max-w-lg m-auto">
@@ -43,7 +45,7 @@
           :class="tab === 'login' ? 'bg-white/[0.06]' : 'bg-white/[0.03]'"
           @click.prevent="tab = 'login'"
         >
-          Login
+          {{ $t('navbar.login') }}
         </div>
 
         <div
@@ -51,7 +53,7 @@
           :class="tab === 'register' ? 'bg-white/[0.06]' : 'bg-white/[0.03]'"
           @click.prevent="tab = 'register'"
         >
-          Sign Up
+          {{ $t('navbar.register') }}
         </div>
       </div>
 

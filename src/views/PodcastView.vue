@@ -4,7 +4,7 @@
     <!-- Music Header -->
     <section class="w-full mb-8 py-14 text-center text-white relative">
       <div class="absolute inset-0 w-full h-full box-border bg-contain music-bg"></div>
-      <div class="container mx-auto flex items-center bg-slate-600">
+      <div class="container mx-auto flex items-center">
         <!-- Play/Pause Button -->
         <button
           type="button"
@@ -23,11 +23,15 @@
     </section>
     <!-- Form -->
     <section class="container mx-auto mt-6" id="comments">
-      <div class="rounded border border-gray-200 relative flex flex-col">
-        <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
+      <div
+        class="relative flex flex-col bg-white/[0.03] backdrop-blur shadow-[0_8px_32px_0px_rgba(31,38,135,0.37 )] rounded"
+      >
+        <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200 border-opacity-30">
           <!-- Comment Count -->
-          <span class="card-title">Comments ({{ podcast.comment_count }})</span>
-          <i class="fa fa-comments float-right text-green-400 text-2xl"></i>
+          <span class="card-title">{{
+            $tc('podcast.comment_count', podcast.comment_count, { count: podcast.comment_count })
+          }}</span>
+          <font-awesome-icon icon="fa fa-comment" class="float-right text-zinc-800 text-2xl" />
         </div>
         <div class="p-6">
           <div
@@ -44,13 +48,13 @@
               class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded mb-4"
               placeholder="Your comment here..."
             ></vee-field>
-            <ErrorMessage name="comment" class="text-red-400"></ErrorMessage>
+            <ErrorMessage name="comment" class="text-[#CF6679]"></ErrorMessage>
             <button
               type="submit"
-              class="py-1.5 px-3 rounded text-white bg-green-600 block"
+              class="py-1.5 px-3 rounded text-white bg-[#4EE4A2] block"
               :disabled="comment_in_submission"
             >
-              Submit
+              {{ $t('auth.cta') }}
             </button>
           </vee-form>
           <!-- Sort Comments -->
@@ -58,24 +62,28 @@
             v-model="sort"
             class="block mt-4 py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
           >
-            <option value="1">Latest</option>
-            <option value="2">Oldest</option>
+            <option value="1">{{ $t('podcast.latest') }}</option>
+            <option value="2">{{ $t('podcast.oldest') }}</option>
           </select>
         </div>
+        <hr class="w-full opacity-10 mt-4 bg-white" />
       </div>
     </section>
     <!-- Comments -->
-    <ul class="container mx-auto">
-      <li class="p-6 border border-gray-200" v-for="comment in sortedComments" :key="comment.docID">
+    <ul
+      class="container mx-auto mb-[10%] bg-white/[0.03] backdrop-blur shadow-[0_8px_32px_0px_rgba(31,38,135,0.37 )] rounded"
+    >
+      <li class="px-6 pt-6" v-for="comment in sortedComments" :key="comment.docID">
         <!-- Comment Author -->
         <div class="mb-5">
           <div class="font-bold">{{ comment.name }}</div>
-          <time>{{ comment.datePosted }}</time>
+          <time class="text-xs">{{ comment.datePosted }}</time>
         </div>
 
         <p>
           {{ comment.content }}
         </p>
+        <hr class="w-full opacity-10 mt-4 bg-white" />
       </li>
     </ul>
   </main>
@@ -102,7 +110,7 @@ export default {
       },
       comment_in_submission: false,
       comment_show_alert: false,
-      comment_alert_variant: 'bg-blue-500',
+      comment_alert_variant: 'bg-[#BB86FC]',
       comment_alert_msg: 'Please wait, your comment is being submitted.',
       comments: [],
       sort: '1'
@@ -125,7 +133,7 @@ export default {
     async addComment(values, { resetForm }) {
       this.comment_in_submission = true
       this.comment_show_alert = true
-      this.comment_alert_variant = 'bg-blue-500'
+      this.comment_alert_variant = 'bg-[#BB86FC]'
       this.comment_alert_msg = 'Please wait, your comment is being submitted.'
 
       const comment = {
@@ -136,20 +144,22 @@ export default {
         uid: auth.currentUser.uid
       }
 
-      await addDoc(commentsCollection, comment)
-      this.podcast.comment_count += 1
-      const docRef = doc(podcastsCollection, this.$route.params.id)
-      await updateDoc(docRef, {
-        comment_count: this.podcast.comment_count
-      })
+      try {
+        await addDoc(commentsCollection, comment)
+        this.podcast.comment_count += 1
+        const docRef = doc(podcastsCollection, this.$route.params.id)
+        await updateDoc(docRef, {
+          comment_count: this.podcast.comment_count
+        })
 
-      this.getComments()
-
-      //this.comment_alert_variant = 'bg-red-500'
-      //this.comment_alert_msg = 'Failed to add comment, please try again later.'
+        this.getComments()
+      } catch (error) {
+        this.comment_alert_variant = 'bg-[#CF6679]'
+        this.comment_alert_msg = 'Failed to add comment, please try again later.'
+      }
 
       this.comment_in_submission = false
-      this.comment_alert_variant = 'bg-green-500'
+      this.comment_alert_variant = 'bg-[#4EE4A2]'
       this.comment_alert_msg = 'Success! Your comment has been added.'
 
       resetForm()

@@ -1,7 +1,7 @@
 <template>
   <!-- top podcasts of the week -->
   <div class="mb-6 md:w-[40%] max-w-[325px]">
-    <h4 class="mb-4">Top Podcasts of the week</h4>
+    <h4 class="mb-4">{{ $t('home.top') }}</h4>
 
     <!-- podcast scroll box -->
     <div

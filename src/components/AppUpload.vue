@@ -3,7 +3,7 @@
     class="rounded bg-white/[0.03] backdrop-blur shadow-[0_8px_32px_0px_rgba(31,38,135,0.37 )] relative flex flex-col"
   >
     <div class="px-6 pt-6 pb-5 font-bold">
-      <span class="card-title text-md">Upload</span>
+      <span class="card-title text-md">{{ $t('manage.upload') }}</span>
       <font-awesome-icon icon="fas fa-upload" class="float-right text-zinc-800 text-2xl" />
     </div>
     <div class="p-6">
@@ -19,7 +19,7 @@
         @dragleave.prevent.stop="is_dragover = false"
         @drop.prevent.stop="upload($event)"
       >
-        <h5 class="pointer-events-none">Drop your files here</h5>
+        <h5 class="pointer-events-none">{{ $t('manage.dropFiles') }}</h5>
       </div>
       <input type="file" multiple @change="upload($event)" class="mt-6 mb-5" />
 
@@ -79,7 +79,7 @@ export default {
             uploadTask,
             current_progress: 0,
             name: file.name,
-            variant: 'bg-blue-400',
+            variant: 'bg-[#BB86FC]',
             icon: 'fas fa-spinner',
             icon_animation: 'fa-spin',
             text_class: ''
@@ -93,7 +93,7 @@ export default {
           },
           (error) => {
             // on error
-            this.uploads[uploadIndex].variant = 'bg-red-400'
+            this.uploads[uploadIndex].variant = 'bg-[#CF6679]'
             this.uploads[uploadIndex].icon = 'fas fa-times'
             this.uploads[uploadIndex].icon_animation = ''
             this.uploads[uploadIndex].text_class = 'text-red-400'

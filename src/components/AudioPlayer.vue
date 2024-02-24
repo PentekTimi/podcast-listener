@@ -1,6 +1,6 @@
 <template>
   <!-- Player -->
-  <div class="fixed bottom-0 left-0 bg-slate-900 px-4 py-2 w-full">
+  <div class="fixed bottom-0 left-0 bg-zinc-800 px-4 py-2 w-full">
     <!-- Track Info -->
     <div class="text-center" v-if="current_podcast.modified_name">
       <span class="song-title font-bold">{{ current_podcast.modified_name }}</span> by
@@ -9,8 +9,8 @@
     <div class="flex flex-nowrap gap-4 items-center">
       <!-- Play/Pause Button -->
       <button type="button" @click.prevent="toggleAudio">
-        <font-awesome-icon v-if="!playing" class="text-gray-500 text-xl w-4" icon="fa fa-play" />
-        <font-awesome-icon v-else class="text-gray-500 text-xl w-4" icon="fa fa-pause" />
+        <font-awesome-icon v-if="!playing" class="text-zinc-400 text-xl w-4" icon="fa fa-play" />
+        <font-awesome-icon v-else class="text-zinc-400 text-xl w-4" icon="fa fa-pause" />
       </button>
       <!-- Current Position -->
       <div class="player-currenttime">{{ seek }}</div>
@@ -21,14 +21,14 @@
       >
         <!-- Player Ball -->
         <span
-          class="absolute -top-2.5 -ml-2.5 text-gray-800 text-lg"
+          class="absolute -top-2.5 -ml-2.5 text-zinc-400 text-lg"
           :style="{ left: playerProgress }"
         >
           <font-awesome-icon icon="fas fa-circle" />
         </span>
         <!-- Player Progress Bar-->
         <span
-          class="block h-2 rounded bg-gradient-to-r from-green-500 to-green-400"
+          class="block h-2 rounded bg-gradient-to-r from-[#4EE4A2] to-[#4EE4A2]"
           :style="{ width: playerProgress }"
         ></span>
       </div>

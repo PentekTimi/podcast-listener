@@ -11,6 +11,7 @@ import './includes/firebase'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import i18n from './includes/i18n'
 
 /* import specific icons */
 import {
@@ -27,7 +28,6 @@ import {
   faRotateLeft,
   faComment
 } from '@fortawesome/free-solid-svg-icons'
-import { faComments } from '@fortawesome/free-regular-svg-icons'
 
 /* add icons to the library */
 library.add(
@@ -54,6 +54,7 @@ auth.onAuthStateChanged(() => {
     app.use(createPinia())
     app.use(router)
     app.use(VeeValidatePlugin)
+    app.use(i18n)
 
     app.mount('#app')
   }

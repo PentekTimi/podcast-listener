@@ -1,0 +1,48 @@
+{
+  "navbar": {
+    "manage": "Administrar",
+    "logout": "Salir",
+    "register": "Registrar",
+    "login": "Iniciar"
+  },
+  "auth": {
+    "navigateBack": "Volver a la página de inicio",
+    "email": "Correo Electrónico",
+    "password": "Contraseña",
+    "notMember": "No eres miembro todavía?",
+    "callToRegister": "Regístrate ahora.",
+    "member": "Es usted miembro?",
+    "callToLogin": "Inicia sesión ahora.",
+    "cta": "Entregar",
+    "confirmPassword": "Confirma Contraseña",
+    "name": "Nome"
+  },
+  "home": {
+    "title1": "DESCUBRA",
+    "title2": "NUEVOS",
+    "title3": "PODCASTS",
+    "title4": "AHORA",
+    "subtitle": "Podcasts galardonados que te enganchan, te hacen pensar o simplemente te hacen reír. Regístrate, escucha ahora y comparte tus propios podcasts.",
+    "cta": "Empezar",
+    "support": "Apoyado por",
+    "top": "Los mejores podcasts de la semana"
+  },
+  "dashboard": {
+    "listen": "Escuche fantásticos podcasts!",
+    "dashboardIntro": "Embárcate en un viaje auditivo con nuestra plataforma de podcasts todo en uno! Sumérgete en un mundo de descubrimientos infinitos mientras exploras, escuchas y compartes podcasts cautivadores. Mejore aún más su experiencia cargando y creando su propio contenido sin esfuerzo, convirtiéndose en parte de la vibrante comunidad que da forma al futuro de la narración de audio."
+  },
+  "podcast": {
+    "comment_count": "Sin comentarios | 1 comentario | {count} comentarios",
+    "latest": "Más reciente",
+    "oldest": "Más antiguo"
+  },
+  "register": {
+    "accept": "Acepto Podcastin's {0}",
+    "tos": "Términos de Servicio"
+  },
+  "manage": {
+    "upload": "Subir",
+    "manageTitle": "Minhas podcasts",
+    "dropFiles": "Deja tus archivos aquí"
+  }
+}

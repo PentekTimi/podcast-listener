@@ -1,0 +1,48 @@
+{
+  "navbar": {
+    "manage": "Manage",
+    "logout": "Log Out",
+    "register": "Sign Up",
+    "login": "Log In"
+  },
+  "auth": {
+    "navigateBack": "Back to Home",
+    "email": "Email",
+    "password": "Password",
+    "notMember": "Not a member yet?",
+    "callToRegister": "Sign Up Now.",
+    "member": "Are you a member?",
+    "callToLogin": "Log In Now.",
+    "cta": "Submit",
+    "confirmPassword": "Confirm Password",
+    "name": "Name"
+  },
+  "home": {
+    "title1": "DISCOVER",
+    "title2": "NEW",
+    "title3": "PODCASTS",
+    "title4": "EVERY DAY",
+    "subtitle": "Award-winning podcasts that hook you in, make you think, or just make you laugh. Sign up, listen now, and share your own podcasts.",
+    "cta": "Get Started",
+    "support": "Supported by",
+    "top": "Top Podcasts of the week"
+  },
+  "dashboard": {
+    "listen": "Listen to Great Podcasts!",
+    "dashboardIntro": "Embark on an auditory journey with our all-in-one podcast platform! Immerse yourself in a world of endless discovery as you explore, listen, and share captivating podcasts. Elevate your experience further by effortlessly uploading and creating your own content, becoming a part of the vibrant community shaping the future of audio storytelling."
+  },
+  "podcast": {
+    "comment_count": "No comments | 1 comment | {count} comments",
+    "latest": "Latest",
+    "oldest": "Oldest"
+  },
+  "register": {
+    "accept": "I accept Podcastin's {0}",
+    "tos": "Terms of Service"
+  },
+  "manage": {
+    "upload": "Upload",
+    "manageTitle": "My podcasts",
+    "dropFiles": "Drop your files here"
+  }
+}

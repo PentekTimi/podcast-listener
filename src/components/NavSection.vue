@@ -16,21 +16,30 @@
             v-show="menu"
             class="absolute right-0 ml-[10%] mt-2 w-[150px] bg-gradient-to-b from-[#00000033] to-black"
           >
+            <li class="relative p-2">
+              <a href="#" @click.prevent="changeLocale">Switch to {{ currentLocale }}</a>
+            </li>
             <li v-if="!userStore.userLoggedIn" class="relative p-2">
-              <router-link @click="setAuthTab('login')" to="/auth">Log In</router-link>
+              <router-link @click="setAuthTab('login')" to="/auth">{{
+                $t('navbar.login')
+              }}</router-link>
             </li>
             <li v-if="!userStore.userLoggedIn" class="relative px-2 pb-4">
-              <router-link @click="setAuthTab('register')" to="/auth">Sign Up</router-link>
+              <router-link @click="setAuthTab('register')" to="/auth">{{
+                $t('navbar.register')
+              }}</router-link>
             </li>
             <template v-else>
               <li class="relative p-2">
                 <router-link :to="{ name: 'dashboard' }">Dashboard</router-link>
               </li>
               <li class="relative p-2">
-                <router-link :to="{ name: 'manage' }">Manage</router-link>
+                <router-link :to="{ name: 'manage' }">{{ $t('navbar.manage') }}</router-link>
               </li>
               <li class="relative px-2 pb-4">
-                <router-link to="/" @click.prevent="userStore.signOut">Log Out</router-link>
+                <router-link to="/" @click.prevent="userStore.signOut">{{
+                  $t('navbar.logout')
+                }}</router-link>
               </li>
             </template>
           </ul>
@@ -40,17 +49,23 @@
 
     <div class="hidden sm:block">
       <ul class="flex">
-        <li v-if="!userStore.userLoggedIn" class="pt-1 pb-1.5 mr-3 cursor-pointer">
-          <router-link @click="setAuthTab('register')" to="/auth" class="hover:text-shadow-sm"
-            >Sign Up</router-link
-          >
+        <li class="pt-1 pb-1.5 mr-6 cursor-pointer">
+          <a href="#" @click.prevent="changeLocale">Switch to {{ currentLocale }}</a>
+        </li>
+        <li v-if="!userStore.userLoggedIn" class="pt-1 pb-1.5 mr-6 cursor-pointer">
+          <router-link @click="setAuthTab('register')" to="/auth" class="hover:text-shadow-sm">{{
+            $t('navbar.register')
+          }}</router-link>
         </li>
         <li
           v-if="!userStore.userLoggedIn"
           class="pt-1 pb-1.5 px-6 lg:px-8 border rounded-xl hover:bg-white hover:text-black cursor-pointer hover:shadow-[#dcdae152] hover:shadow-lg"
         >
-          <router-link @click="setAuthTab('login')" to="/auth">Log In</router-link>
+          <router-link @click="setAuthTab('login')" to="/auth">{{
+            $t('navbar.login')
+          }}</router-link>
         </li>
+
         <template v-else>
           <li class="pt-1 pb-1.5 mr-6 cursor-pointer">
             <router-link :to="{ name: 'dashboard' }" class="hover:text-shadow-sm"
@@ -58,12 +73,14 @@
             >
           </li>
           <li class="pt-1 pb-1.5 mr-6 cursor-pointer">
-            <router-link :to="{ name: 'manage' }" class="hover:text-shadow-sm">Manage</router-link>
+            <router-link :to="{ name: 'manage' }" class="hover:text-shadow-sm">{{
+              $t('navbar.manage')
+            }}</router-link>
           </li>
           <li class="pt-1 pb-1.5 cursor-pointer">
-            <router-link to="/" class="hover:text-shadow-sm" @click.prevent="userStore.signOut"
-              >Log Out</router-link
-            >
+            <router-link to="/" class="hover:text-shadow-sm" @click.prevent="userStore.signOut">{{
+              $t('navbar.logout')
+            }}</router-link>
           </li>
         </template>
       </ul>
@@ -86,12 +103,20 @@ export default {
       menu: false
     }
   },
+  computed: {
+    currentLocale() {
+      return this.$i18n.locale === 'es' ? 'English' : 'Spanish'
+    }
+  },
   methods: {
     showMenu() {
       this.menu = !this.menu
     },
     setAuthTab(arg) {
       this.authStore.authTab = arg
+    },
+    changeLocale() {
+      this.$i18n.locale = this.$i18n.locale === 'es' ? 'en' : 'es'
     }
   }
 }

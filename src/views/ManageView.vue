@@ -15,7 +15,7 @@
             class="bg-white/[0.03] backdrop-blur shadow-[0_8px_32px_0px_rgba(31,38,135,0.37 )] rounded relative flex flex-col"
           >
             <div class="px-6 pt-6 pb-5 font-bold">
-              <span class="card-title text-md">My Songs</span>
+              <span class="card-title text-md">{{ $t('manage.manageTitle') }}</span>
               <font-awesome-icon
                 icon="fa fa-compact-disc"
                 class="float-right text-zinc-800 text-2xl"

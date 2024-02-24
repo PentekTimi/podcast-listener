@@ -33,7 +33,7 @@
             placeholder="Enter Song Title"
             @input="updateUnsavedFlag(true)"
           />
-          <ErrorMessage class="text-red-600" name="modified_name" />
+          <ErrorMessage class="text-[#CF6679]" name="modified_name" />
         </div>
         <div class="mb-3">
           <label class="inline-block mb-2">Genre</label>
@@ -44,14 +44,14 @@
             placeholder="Enter Genre"
             @input="updateUnsavedFlag(true)"
           />
-          <ErrorMessage class="text-red-600" name="genre" />
+          <ErrorMessage class="text-[#CF6679]" name="genre" />
         </div>
         <button
           type="submit"
           class="py-1.5 px-3 mr-3 rounded text-white bg-[#BB86FC]"
           :disabled="in_submission"
         >
-          Submit
+          {{ $t('auth.cta') }}
         </button>
         <button
           type="button"
@@ -104,7 +104,7 @@ export default {
       },
       in_submission: false,
       show_alert: false,
-      alert_variant: 'bg-blue-500',
+      alert_variant: 'bg-[#BB86FC]',
       alert_message: 'Please wait, updating podcast information.'
     }
   },
@@ -112,7 +112,7 @@ export default {
     async edit(values) {
       this.in_submission = true
       this.show_alert = true
-      this.alert_variant = 'bg-blue-500'
+      this.alert_variant = 'bg-[#BB86FC]'
       this.alert_message = 'Please wait, updating podcast information.'
 
       const podcastRef = doc(podcastsCollection, this.podcast.docID)
@@ -121,7 +121,7 @@ export default {
         await updateDoc(podcastRef, values)
       } catch (error) {
         this.in_submission = false
-        this.alert_variant = 'bg-red-500'
+        this.alert_variant = 'bg-[#CF6679]'
         this.alert_message = 'Something went wrong, please try again later.'
         return
       }
@@ -130,7 +130,7 @@ export default {
       this.updateUnsavedFlag(false)
 
       this.in_submission = false
-      this.alert_variant = 'bg-green-500'
+      this.alert_variant = 'bg-[#4EE4A2]'
       this.alert_message = 'Success!'
     },
     async deletePodcast() {
