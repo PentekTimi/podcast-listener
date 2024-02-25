@@ -65,7 +65,19 @@ export default {
 
       files.forEach((file) => {
         if (file.type !== 'audio/mpeg') {
-          console.log('wrong file type')
+          return
+        }
+
+        if (!navigator.onLine) {
+          this.uploads.push({
+            uploadTask: {},
+            current_progress: 100,
+            name: file.name,
+            variant: 'bg-[#CF6679]',
+            icon: 'fas fa-times',
+            icon_animation: '',
+            text_class: 'text-[#CF6679]'
+          })
           return
         }
 
@@ -97,7 +109,6 @@ export default {
             this.uploads[uploadIndex].icon = 'fas fa-times'
             this.uploads[uploadIndex].icon_animation = ''
             this.uploads[uploadIndex].text_class = 'text-red-400'
-            console.log(error)
           },
           async () => {
             // on success
@@ -123,7 +134,6 @@ export default {
           }
         )
       })
-      console.log(files)
     }
   },
   beforeUnmount() {

@@ -12,6 +12,9 @@ import './includes/firebase'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import i18n from './includes/i18n'
+import { registerSW } from 'virtual:pwa-register'
+import progressBar from './includes/progress-bar'
+import 'nprogress/nprogress.css'
 
 /* import specific icons */
 import {
@@ -44,6 +47,9 @@ library.add(
   faRotateLeft,
   faComment
 )
+
+registerSW({ immediate: true })
+progressBar(router)
 
 let app
 auth.onAuthStateChanged(() => {

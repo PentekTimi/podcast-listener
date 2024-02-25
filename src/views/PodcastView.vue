@@ -178,20 +178,22 @@ export default {
       })
     }
   },
-  async created() {
-    const docRef = doc(podcastsCollection, this.$route.params.id)
+  async beforeRouteEnter(to, from, next) {
+    const docRef = doc(podcastsCollection, to.params.id)
     const docSnapshot = await getDoc(docRef)
 
-    if (!docSnapshot.exists()) {
-      this.$router.push({ name: 'home' })
-      return
-    }
+    next((vm) => {
+      if (!docSnapshot.exists()) {
+        vm.$router.push({ name: 'home' })
+        return
+      }
 
-    const { sort } = this.$route.query
-    this.sort = sort == '1' || sort == '2' ? sort : '1'
+      const { sort } = vm.$route.query
+      vm.sort = sort == '1' || sort == '2' ? sort : '1'
 
-    this.podcast = docSnapshot.data()
-    this.getComments()
+      vm.podcast = docSnapshot.data()
+      vm.getComments()
+    })
   },
   watch: {
     sort(newVal) {

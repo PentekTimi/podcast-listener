@@ -1,6 +1,11 @@
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
-import { collection, getFirestore } from 'firebase/firestore'
+import {
+  collection,
+  getFirestore,
+  initializeFirestore,
+  persistentLocalCache
+} from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
 
 const firebaseConfig = {
@@ -12,6 +17,7 @@ const firebaseConfig = {
 }
 
 const firebaseApp = initializeApp(firebaseConfig)
+initializeFirestore(firebaseApp, { localCache: persistentLocalCache({}) })
 
 const auth = getAuth(firebaseApp)
 const db = getFirestore(firebaseApp)

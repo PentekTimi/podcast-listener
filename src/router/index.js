@@ -1,9 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import AuthView from '../views/AuthView.vue'
-import ManageView from '../views/ManageView.vue'
-import DashboardView from '../views/DashboardView.vue'
-import PodcastView from '../views/PodcastView.vue'
 import useUserStore from '@/stores/user'
 
 const router = createRouter({
@@ -12,43 +7,35 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: () => import('../views/HomeView.vue')
     },
     {
       path: '/auth',
       name: 'auth',
-      component: AuthView
+      component: () => import('../views/AuthView.vue')
     },
     {
       path: '/manage',
       name: 'manage',
-      component: ManageView,
+      component: () => import('../views/ManageView.vue'),
       meta: { requiresAuth: true }
     },
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: DashboardView,
+      component: () => import('../views/DashboardView.vue'),
       meta: { requiresAuth: true }
     },
     {
       path: '/podcast/:id',
       name: 'podcast',
-      component: PodcastView,
+      component: () => import('../views/PodcastView.vue'),
       meta: { requiresAuth: true }
     },
     {
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
       redirect: '/'
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
     }
   ]
 })
