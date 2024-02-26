@@ -5,7 +5,7 @@
       <router-link to="/"><h2 class="">PODCASTIN'</h2></router-link>
     </div>
     <div class="">
-      <div class="relative sm:hidden w-6 cursor-pointer" @click="showMenu">
+      <div class="relative sm:hidden w-6 cursor-pointer z-10" @click="showMenu">
         <img src="../assets/hamburger-menu.png" class="relative z-10" />
 
         <transition
@@ -30,10 +30,10 @@
               }}</router-link>
             </li>
             <template v-else>
-              <li class="relative p-2">
+              <li class="relative px-2 pb-2">
                 <router-link :to="{ name: 'dashboard' }">Dashboard</router-link>
               </li>
-              <li class="relative p-2">
+              <li class="relative px-2 pb-2">
                 <router-link :to="{ name: 'manage' }">{{ $t('navbar.manage') }}</router-link>
               </li>
               <li class="relative px-2 pb-4">

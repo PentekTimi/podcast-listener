@@ -1,14 +1,16 @@
 <template>
-  <!-- introduction text and button -->
+  <!-- home introduction text and button -->
   <div class="md:w-[55%]">
     <div>
+      <!-- home intro text -->
       <p class="mb-4 lg:text-xl font-light">
         {{ $t('home.subtitle') }}
       </p>
 
+      <!-- home cta button -->
       <router-link
         @click="setAuthTab('register')"
-        to="/auth"
+        :to="userStore.userLoggedIn ? { name: 'dashboard' } : { name: 'auth' }"
         class="animated-box inline-block pt-2 pb-2.5 px-6 lg:px-8 border rounded-xl mb-10 md:mb-5 cursor-pointer"
       >
         <span class="span-hide"></span>
@@ -61,11 +63,13 @@
 
 <script>
 import { useAuthStore } from '../stores/auth'
+import useUserStore from '@/stores/user'
 export default {
   name: 'HomeContent',
   setup() {
     const authStore = useAuthStore()
-    return { authStore }
+    const userStore = useUserStore()
+    return { authStore, userStore }
   },
   methods: {
     setAuthTab(arg) {

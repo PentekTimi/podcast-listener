@@ -1,7 +1,9 @@
 <template>
   <div class="px-3 pb-3 mb-4">
     <div v-show="!showForm">
-      <h4 class="inline-block text-2xl font-bold">{{ podcast.modified_name }}</h4>
+      <h4 class="inline-block text-2xl font-bold max-w-[60%] text-wrap break-words">
+        {{ podcast.modified_name }}
+      </h4>
       <button
         class="ml-1 py-1 px-2 text-sm rounded text-white bg-[#CF6679] float-right"
         @click.prevent="deletePodcast"
@@ -25,7 +27,7 @@
       </div>
       <vee-form class="mt-4" :validation-schema="schema" :initial-values="podcast" @submit="edit">
         <div class="mb-3">
-          <label class="inline-block mb-2">Song Title</label>
+          <label class="inline-block mb-2">Podcast Title</label>
           <vee-field
             name="modified_name"
             type="text"
@@ -36,7 +38,7 @@
           <ErrorMessage class="text-[#CF6679]" name="modified_name" />
         </div>
         <div class="mb-3">
-          <label class="inline-block mb-2">Genre</label>
+          <label class="inline-block mb-2">Category</label>
           <vee-field
             name="genre"
             type="text"

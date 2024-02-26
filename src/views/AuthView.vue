@@ -21,9 +21,21 @@
     <!-- small screen forms -->
     <div class="md:hidden">
       <div class="text-center">
-        <h1 class="text-xl mb-1">
+        <h1 class="text-xl mb-1 mt-4">
           {{ tab === 'register' ? $t('navbar.register') : $t('navbar.login') }}
         </h1>
+      </div>
+
+      <!-- test accounts info -->
+      <div class="p-4 my-4 bg-white/[0.05] backdrop-blur rounded max-w-lg m-auto">
+        <p class="font-bold text-md mb-4">Test accounts for login</p>
+        <div class="mb-4">
+          <p class="text-sm">Email: janedoe@email.com</p>
+          <p class="text-sm">Password: 1234567</p>
+        </div>
+
+        <p class="text-sm">Email: michaeldavids@email.com</p>
+        <p class="text-sm">Password: 1234567</p>
       </div>
 
       <div v-show="tab === 'register'" class="max-w-lg m-auto">
@@ -37,7 +49,7 @@
 
     <!-- aabove md screen forms -->
     <div
-      class="hidden md:block max-w-xl m-auto px-12 py-12 rounded bg-white/[0.03] backdrop-blur shadow-[0_8px_32px_0px_rgba(31,38,135,0.37 )]"
+      class="hidden md:block max-w-xl m-auto px-12 py-12 mt-4 rounded bg-white/[0.03] backdrop-blur shadow-[0_8px_32px_0px_rgba(31,38,135,0.37 )]"
     >
       <div class="flex mb-8 shadow-md">
         <div
@@ -54,6 +66,21 @@
           @click.prevent="tab = 'register'"
         >
           {{ $t('navbar.register') }}
+        </div>
+      </div>
+
+      <!-- test accounts info -->
+      <div class="p-4 mb-2 bg-white/[0.05] backdrop-blur rounded">
+        <p class="font-bold text-md mb-4">Test accounts for login</p>
+        <div class="flex">
+          <div class="mr-14">
+            <p class="text-sm">Email: janedoe@email.com</p>
+            <p class="text-sm">Password: 1234567</p>
+          </div>
+          <div>
+            <p class="text-sm">Email: michaeldavids@email.com</p>
+            <p class="text-sm">Password: 1234567</p>
+          </div>
         </div>
       </div>
 

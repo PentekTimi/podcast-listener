@@ -18,7 +18,7 @@
           />
           <div class="w-6/12">
             <p class="text-sm font-semibold">Comedy sunday</p>
-            <p class="font-light">#category</p>
+            <p class="font-light text-sm">#comedy</p>
           </div>
         </div>
 
@@ -27,24 +27,54 @@
         <div class="flex flex-wrap h-auto items-center justify-between">
           <p class="w-1/12 font-bold text-lg">02.</p>
           <img
-            src="../assets/bannerImages/daniel-korpai-8GDCzWrcE3M-unsplash.jpg"
+            src="../assets/bannerImages/chris-lynch-Qruwi3Ur3Ak-unsplash 2.jpg"
             class="w-3/12 rounded-lg"
           />
           <div class="w-6/12">
-            <p class="text-sm font-semibold">Ear Hustle</p>
-            <p class="font-light">#category</p>
+            <p class="text-sm font-semibold">Hot Cold Plunge</p>
+            <p class="font-light text-sm">#health</p>
           </div>
         </div>
+
         <hr class="w-[95%] opacity-10 my-5" />
+
         <div class="flex flex-wrap h-auto items-center justify-between">
-          <p class="w-1/12 font-bold text-lg">02.</p>
+          <p class="w-1/12 font-bold text-lg">03.</p>
           <img
-            src="../assets/bannerImages/daniel-korpai-8GDCzWrcE3M-unsplash.jpg"
+            src="../assets/bannerImages/carl-ramolefi-DQVskEMS9pk-unsplash.jpg"
             class="w-3/12 rounded-lg"
           />
           <div class="w-6/12">
-            <p class="text-sm font-semibold">Ear Hustle</p>
-            <p class="font-light">#category</p>
+            <p class="text-sm font-semibold">Top 5 cities to invest in</p>
+            <p class="font-light text-sm">#money</p>
+          </div>
+        </div>
+
+        <hr class="w-[95%] opacity-10 my-5" />
+
+        <div class="flex flex-wrap h-auto items-center justify-between">
+          <p class="w-1/12 font-bold text-lg">04.</p>
+          <img
+            src="../assets/bannerImages/andras-vas-Bd7gNnWJBkU-unsplash.jpg"
+            class="w-3/12 rounded-lg"
+          />
+          <div class="w-6/12">
+            <p class="text-sm font-semibold">New Vue features</p>
+            <p class="font-light text-sm">#tech</p>
+          </div>
+        </div>
+
+        <hr class="w-[95%] opacity-10 my-5" />
+
+        <div class="flex flex-wrap h-auto items-center justify-between">
+          <p class="w-1/12 font-bold text-lg">05.</p>
+          <img
+            src="../assets/bannerImages/xavier-cee-ACvPuLg4uts-unsplash 2.jpg"
+            class="w-3/12 rounded-lg"
+          />
+          <div class="w-6/12">
+            <p class="text-sm font-semibold">In our time</p>
+            <p class="font-light text-sm">#life</p>
           </div>
         </div>
       </div>
