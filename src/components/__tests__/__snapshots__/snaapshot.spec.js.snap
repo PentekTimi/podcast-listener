@@ -1,0 +1,39 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`snapshots PodcastItem.vue > renders correctly 1`] = `
+<a>
+  <li
+    class="flex justify-between items-center p-3 pl-6 cursor-pointer transition duration-300 hover:bg-gray-50"
+  >
+    <div
+      class="max-w-[70%]"
+    >
+      <p
+        class="font-bold block text-zinc-400 break-words text-wrap"
+      >
+        test
+      </p>
+      <span
+        class="text-zinc-500 text-sm"
+      >
+        test
+      </span>
+    </div>
+    <div
+      class="text-zinc-600 text-lg"
+    >
+      
+      <span
+        class="comments"
+      >
+        <font-awesome-icon
+          class="text-zinc-600"
+          icon="fa fa-comment "
+        />
+         5
+      </span>
+      
+    </div>
+  </li>
+</a>
+`;

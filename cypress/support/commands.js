@@ -23,3 +23,16 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+export function login() {
+  Cypress.Commands.add('login', (username, password) => {
+    // authTab is currently set to register and not login - will cause the login to fail
+    cy.visit('/auth')
+    //type in login info to input fields
+    cy.get('#email').type(username, { force: true })
+    cy.get('#password').type(password, { force: true })
+    //get submit btn
+    cy.get('#login').click({ force: true })
+    cy.url().should('contain', '/')
+  })
+}

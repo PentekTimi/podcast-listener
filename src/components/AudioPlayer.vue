@@ -8,7 +8,7 @@
     </div>
     <div class="flex flex-nowrap gap-4 items-center">
       <!-- Play/Pause Button -->
-      <button type="button" @click.prevent="toggleAudio">
+      <button type="button" @click.prevent="toggleAudio" id="player-play-btn">
         <font-awesome-icon v-if="!playing" class="text-zinc-400 text-xl w-4" icon="fa fa-play" />
         <font-awesome-icon v-else class="text-zinc-400 text-xl w-4" icon="fa fa-pause" />
       </button>
